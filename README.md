@@ -4,9 +4,30 @@ Un skill en français pour **Claude, ChatGPT et Codex**, qui prépare une annonc
 
 Le prix fourni par l'utilisateur est prioritaire. Sinon, l'assistant cherche une fourchette Vinted réellement visible et pertinente, puis des comparables sourcés si nécessaire. Il demande les informations utiles qui manquent et décrit les défauts connus.
 
+## Configurer ChatGPT sur mobile sans catalogue
+
+Les instructions personnalisées sont disponibles sur iOS et Android. Un projet ChatGPT permet de garder les instructions et les fichiers propres à Vinted. Cette configuration ne nécessite pas de soumission au catalogue. [Instructions personnalisées OpenAI](https://help.openai.com/fr-fr/articles/8096356-chatgpt-custom-instructions), [projets ChatGPT](https://help.openai.com/en/articles/10169521-projects-in-chatgpt).
+
+### Configuration recommandée : un projet Vinted
+
+1. Dans ChatGPT sur téléphone, ouvrir les projets et créer **Vinted**. Selon l’interface, les projets se trouvent dans la barre latérale, dans **Explorer → Projets** ou dans **Plus de ChatGPT** sur Android.
+2. Enregistrer le fichier [assistant-instructions.md](docs/assistant-instructions.md), puis l’ajouter comme fichier du projet. Le lien GitHub seul ne remplace pas cet ajout.
+3. Dans le menu **••• → Paramètres du projet**, copier le texte des [instructions courtes](docs/chatgpt-custom-instructions.txt) dans le champ d’instructions du projet.
+4. Pour chaque article, démarrer une nouvelle discussion dans ce projet, joindre les photos et écrire **« Prépare ce produit pour Vinted »**.
+
+Le fichier complet et les instructions restent disponibles aux discussions du projet : leur ajout se fait une fois, puis doit être renouvelé si l’utilisateur souhaite adopter une nouvelle version publiée ici. Les instructions du projet s’appliquent à ce projet et prennent le pas sur les instructions personnalisées générales. Les photos et les précisions restent propres à chaque article ; ne pas présumer les caractéristiques d’un nouvel article à partir d’une autre discussion.
+
+### Variante : instructions personnalisées générales
+
+1. Dans l’app iOS ou Android, ouvrir **Paramètres → Personnaliser ChatGPT** et activer la personnalisation.
+2. Copier le texte des [instructions courtes](docs/chatgpt-custom-instructions.txt) dans **Instructions personnalisées**, en conservant les autres préférences utiles dans la limite du champ.
+3. Joindre les photos d’un article dans une discussion et écrire **« Prépare ce produit pour Vinted »**.
+
+Le texte proposé fait moins de 1 500 caractères pour tenir dans la limite Free et Go ; la limite documentée pour les autres offres est de 5 000 caractères. Les réglages généraux concernent toutes les discussions, mais ce texte déclenche le parcours Vinted quand la demande le concerne. La version courte résume les règles principales ; ajouter le document complet à une discussion ou à un projet pour disposer de toutes les références. Une instruction personnalisée n’ajoute aucun outil de navigation ou de transfert de photos absent du compte.
+
 ## Démarrer sur téléphone avec Claude ou ChatGPT
 
-**Le dossier `SKILL.md` installé localement dans Codex ne s’installe pas directement dans ChatGPT mobile depuis un lien GitHub.** Pour essayer la préparation d’une annonce sur téléphone, utiliser le document complet ci-dessous comme instructions de conversation. Pour une installation réutilisable dans ChatGPT, voir le parcours plugin plus bas : les skills distribués dans un plugin peuvent être disponibles sur mobile. [Différence officielle entre skills locaux et plugins](https://learn.chatgpt.com/docs/build-skills).
+**Le dossier `SKILL.md` installé localement dans Codex ne s’installe pas directement dans ChatGPT mobile depuis un lien GitHub.** Pour un usage réutilisable, configurer le projet Vinted décrit ci-dessus. Pour un essai dans une discussion, utiliser le document complet ci-dessous. Le parcours plugin plus bas concerne la distribution par plugin. [Différence officielle entre skills locaux et plugins](https://learn.chatgpt.com/docs/build-skills).
 
 Pour préparer le texte sans installer de skill :
 
