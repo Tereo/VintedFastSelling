@@ -1,90 +1,151 @@
 # VintedFastSelling
 
-Un skill en français pour préparer une annonce Vinted France de vêtement ou de jouet à partir des photos d'un seul article. Il rédige une fiche, conserve la provenance des informations et peut préremplir le formulaire si l'environnement dispose d'un navigateur compatible. **La publication reste manuelle.**
+Un skill en français pour **Claude, ChatGPT et Codex**, qui prépare une annonce Vinted France de vêtement ou de jouet depuis les photos d'un seul article. Les trois utilisent les mêmes instructions et références. **La publication reste manuelle.**
 
-Le prix fourni par l'utilisateur est prioritaire. Sinon, le skill cherche une fourchette Vinted réellement visible et pertinente, puis des comparables sourcés si nécessaire. Il demande les informations manquantes et décrit les défauts connus.
+Le prix fourni par l'utilisateur est prioritaire. Sinon, l'assistant cherche une fourchette Vinted réellement visible et pertinente, puis des comparables sourcés si nécessaire. Il demande les informations utiles qui manquent et décrit les défauts connus.
 
-## Prérequis
+## Démarrer sur téléphone avec Claude ou ChatGPT
 
-- Un agent compatible avec les skills et capable de lire les images jointes, par exemple Codex. Le compte et les outils de cet agent sont fournis par l'utilisateur.
-- Python **3.10 ou supérieur**, uniquement pour l'installation et les tests. La bibliothèque standard suffit : aucun `pip install`, serveur ou clé API propre au projet.
-- Git pour cloner le dépôt ; une archive téléchargée convient également.
-- Pour le préremplissage : un outil de navigation et de transfert de photos disponible dans l'agent, ainsi qu'une session Vinted ouverte par l'utilisateur dans l'interface sécurisée.
+**Le dossier `SKILL.md` installé localement dans Codex ne s’installe pas directement dans ChatGPT mobile depuis un lien GitHub.** Pour essayer la préparation d’une annonce sur téléphone, utiliser le document complet ci-dessous comme instructions de conversation. Pour une installation réutilisable dans ChatGPT, voir le parcours plugin plus bas : les skills distribués dans un plugin peuvent être disponibles sur mobile. [Différence officielle entre skills locaux et plugins](https://learn.chatgpt.com/docs/build-skills).
 
-La fiche reste utilisable sans navigateur. Le dépôt ne fournit pas de moteur de navigation et ne garantit pas l'installation dans ChatGPT Android, un navigateur cloud ou un compte particulier.
+Pour préparer le texte sans installer de skill :
 
-## Installation locale dans Codex
+1. Ouvrir les [instructions complètes](docs/assistant-instructions.md), puis enregistrer ce fichier ou copier son contenu.
+2. Joindre le document et les photos originales d'un seul article dans une conversation Claude ou ChatGPT capable de lire les images.
+3. Écrire : **« Applique les instructions jointes aux photos pour préparer mon annonce Vinted. Je veux le titre, la description et les champs à recopier. »** Ajouter le prix, la taille ou l’état si connus.
+4. Vérifier la fiche obtenue, puis copier ses champs dans Vinted.
+
+Ce document réunit le skill et toutes ses références. Il est généré depuis `skills/` et contrôlé par les tests. La méthode fonctionne comme instructions de conversation ; elle n'installe pas un skill permanent dans le compte. Les fonctions de pièces jointes et d'analyse d'images doivent être disponibles dans l'assistant choisi.
+
+Pour essayer avec un lien public, copier cette demande dans l'assistant :
+
+```text
+Lis les instructions complètes de ce fichier :
+https://raw.githubusercontent.com/Tereo/VintedFastSelling/main/docs/assistant-instructions.md
+Applique-les aux photos jointes pour préparer mon annonce Vinted.
+Si tu ne peux pas lire le document intégralement, dis-le et demande-moi de le joindre.
+```
+
+Un assistant peut échouer à lire une URL. Le document joint reste alors le parcours à utiliser. **Le lien du dépôt seul ne déclenche pas une installation.**
+
+Si ChatGPT répond « ce skill Codex ne peut pas être installé ici », enregistrer les [instructions complètes](docs/assistant-instructions.md), les joindre avec les photos et utiliser la demande de l’étape 3. L’essai porte sur la préparation de l’annonce dans cette conversation. Le préremplissage de Vinted dépend séparément des outils réellement disponibles dans l’assistant.
+
+## Installer le skill dans Claude
+
+Utiliser le fichier **`vinted-prepare-listing-claude.zip`**, obtenu par la génération ou le téléchargement décrits ci-dessous.
+
+1. Dans Claude, activer l'exécution de code et la création de fichiers dans les capacités du compte, si nécessaire.
+2. Ouvrir **Customize → Skills → + → Create skill → Upload a skill**.
+3. Importer le ZIP du skill et l'activer dans la liste.
+4. Ouvrir une conversation avec les photos, puis écrire « Prépare ce produit pour Vinted » ou « Vends ça sur Vinted ».
+
+Le ZIP contient directement le dossier `vinted-prepare-listing/`, son `SKILL.md`, ses références et la licence. L'archive complète du dépôt téléchargée sur GitHub a une autre structure. Si les réglages d'importation ne sont pas présents dans l'app mobile, utiliser l'interface web du compte ou le document joint. Les options dépendent du compte et des règles de l'espace de travail. Voir [l'import officiel des skills Claude](https://support.claude.com/en/articles/12512180-use-skills-in-claude).
+
+### Installer depuis le dépôt avec les plugins Claude
+
+Le dépôt contient aussi un manifeste et un catalogue `.claude-plugin/`. Lorsque les marketplaces sont proposées dans l'interface, ouvrir **Customize → Plugins → Add → Add marketplace → Add from a repository**, saisir `Tereo/VintedFastSelling`, puis installer le plugin `vinted-prepare-listing`. [Parcours officiel Claude](https://support.claude.com/en/articles/13837440-use-plugins-in-claude).
+
+Dans Claude Code, l'équivalent est :
+
+```sh
+claude plugin marketplace add Tereo/VintedFastSelling
+claude plugin install vinted-prepare-listing@vinted-fast-selling
+```
+
+## Utiliser le plugin dans ChatGPT
+
+Le fichier **`vinted-prepare-listing-plugin.zip`** contient le manifeste Agent Plugins à la racine, le manifeste compatible Claude et le skill dans `skills/`. Il ne déclare ni serveur MCP ni dépendance d'exécution locale.
+
+- **Avec un espace de travail qui permet l'import de plugins** : un administrateur peut importer le catalogue depuis `https://github.com/Tereo/VintedFastSelling`, sans sous-dossier, puis rendre le plugin disponible. Le catalogue `.claude-plugin/marketplace.json` est un format d'import pris en charge par ChatGPT. Voir [l'import GitHub officiel](https://learn.chatgpt.com/docs/enterprise/plugin-management).
+- **Pour une distribution dans l'annuaire public ChatGPT** : le ZIP est le paquet à téléverser dans le parcours de soumission OpenAI. L'accès et la validation par OpenAI restent nécessaires ; ce dépôt ne publie rien dans l'annuaire. Voir [la soumission officielle](https://developers.openai.com/plugins/deploy/submission).
+- **Sans possibilité d'importation sur le compte** : utiliser les instructions jointes du parcours mobile ci-dessus.
+
+Après installation d'un plugin disponible dans le compte, démarrer une nouvelle conversation et sélectionner le plugin avec `@`, ou décrire la tâche. Les skills distribués par plugin peuvent être utilisés sur mobile ; une installation locale dans Codex reste sur la machine concernée. Voir [les surfaces prises en charge par OpenAI](https://learn.chatgpt.com/docs/build-skills).
+
+## Générer ou télécharger les paquets
+
+Sur GitHub, ouvrir **Actions → Tests → une exécution réussie → Artifacts → vinted-claude-chatgpt**. Décompresser ce téléchargement pour récupérer les ZIP d'importation et le document unique. Les artefacts sont produits après les tests et conservés 30 jours.
+
+Pour les générer localement, Python **3.10 ou supérieur** et sa bibliothèque standard suffisent :
 
 ```sh
 git clone https://github.com/Tereo/VintedFastSelling.git
 cd VintedFastSelling
-python3 tools/install_local.py
-python3 tools/install_local.py --check
+python3 tools/build_packages.py
+python3 tools/build_packages.py --check
 ```
 
-Sous Windows, remplacer `python3` par `python` ou `py -3` selon l'installation. L'installateur crée un lien relatif dans `.agents/skills/vinted-prepare-listing`. Si les liens symboliques ne sont pas autorisés, il installe une copie. Pour choisir directement la copie :
+| Fichier dans `dist/` | Utilisation |
+| --- | --- |
+| `vinted-prepare-listing-claude.zip` | Import d'un skill dans Claude. |
+| `vinted-prepare-listing-plugin.zip` | Import ou distribution du plugin ChatGPT/Claude. |
+| `vinted-prepare-listing-instructions.md` | Document unique à joindre à une conversation sur téléphone ou ordinateur. |
+| `SHA256SUMS` | Empreintes des trois livrables. |
 
-```sh
-python3 tools/install_local.py --copy
-```
+La commande met aussi à jour `docs/assistant-instructions.md`. Les ZIP utilisent une liste fermée de fichiers, sans photos, sessions ou configuration locale. La génération ne nécessite aucun compte, serveur ou clé API. `dist/` est ignoré par Git ; le document mobile est suivi pour rester accessible par lien.
 
-L'installateur ne remplace jamais un contenu existant différent et ne modifie pas la configuration globale. Le dossier `livrables/` et son rapport d'installation sont créés localement et ignorés par Git.
+## Préremplissage de Vinted
 
-Ouvrir un chat Codex associé au dossier du projet. Si nécessaire, rouvrir le chat après l'installation. Le skill peut alors être utilisé avec une demande en langage courant, comme ci-dessous.
-
-Après une mise à jour des sources, le lien utilise directement les nouvelles instructions. Avec une copie, `--check` détecte les différences : conserver les éventuelles modifications locales, retirer l'ancienne copie puis relancer `--copy`. Pour désinstaller, retirer uniquement le lien ou la copie `.agents/skills/vinted-prepare-listing` et conserver `skills/`.
-
-## Utilisation
-
-Une fois le skill installé et disponible dans le chat, joindre les photos originales d'un seul article et écrire :
-
-```text
-Vends ça sur Vinted.
-```
-
-Le skill prépare l'annonce et préremplit Vinted si les outils le permettent. Vous vérifiez et publiez vous-même.
-
-Pour obtenir uniquement le texte, sans ouvrir Vinted :
-
-```text
-Prépare ce produit pour Vinted.
-```
-
-Le prix et les autres informations sont facultatifs. Par exemple :
+Une fois les instructions chargées, joindre les photos et écrire :
 
 ```text
 Vends ça sur Vinted à 12,50 €. Porté deux fois.
 ```
 
-Pas besoin de citer le nom du skill ni de reprendre ces phrases mot pour mot : « vend ca sur vinted » convient aussi. Le skill examine les photos, utilise les précisions fournies et demande seulement les informations utiles qui manquent.
+Cette demande autorise la préparation puis le préremplissage de cet article si l'assistant dispose réellement d'un navigateur, d'une connexion sécurisée à Vinted et du transfert des photos. Les phrases courantes et variantes comme « vend ca sur vinted » sont reconnues sans mention du nom du skill.
 
-Le résultat distingue une fiche préparée, un formulaire partiel, un formulaire vérifié et un brouillon dont la sauvegarde a été constatée. Le skill s'arrête devant une connexion à effectuer, un CAPTCHA ou une restriction du site, sans contournement. Une pause entre les saisies ne garantit aucune propriété anti-détection.
+Pour le texte uniquement, sans ouvrir Vinted :
+
+```text
+Prépare ce produit pour Vinted.
+```
+
+La rédaction ne nécessite pas de Mac allumé. Le préremplissage dépend des outils du compte et de l'environnement choisi ; installer le skill ou le plugin n'ajoute pas de navigateur. Le skill ne pilote pas automatiquement les apps Vinted, Chrome ou Safari du téléphone. Si les outils manquent, il fournit la fiche à recopier.
+
+Le résultat distingue une fiche préparée, un formulaire partiel, un formulaire vérifié et un brouillon dont la sauvegarde a été constatée. Une connexion à effectuer, un CAPTCHA ou une restriction du site entraîne une main à l'utilisateur ou un arrêt, sans contournement. L'utilisateur vérifie et publie lui-même.
+
+## Installation locale dans Codex
+
+Depuis le dépôt cloné :
+
+```sh
+python3 tools/install_local.py
+python3 tools/install_local.py --check
+```
+
+Sous Windows, remplacer `python3` par `python` ou `py -3`. L'installateur crée un lien relatif dans `.agents/skills/vinted-prepare-listing`, ou une copie si les liens sont interdits. L'option `--copy` force la copie. Il ne remplace jamais un contenu existant différent et ne modifie pas la configuration globale.
+
+Ouvrir un chat Codex associé au dossier du projet. Si nécessaire, rouvrir le chat après l'installation. Le dossier `livrables/` et son rapport d'installation restent locaux et ignorés par Git.
+
+Après mise à jour des sources, le lien utilise les nouvelles instructions. Avec une copie, `--check` détecte les différences : conserver les modifications locales, retirer l'ancienne copie puis relancer `--copy`. Pour désinstaller, retirer uniquement le lien ou la copie `.agents/skills/vinted-prepare-listing` et conserver `skills/`.
 
 ## Vérification et tests
 
 ```sh
-python3 tools/run_tests.py
 python3 tools/run_tests.py --report reports/tests-results.json
+python3 tools/build_packages.py --check
 ```
 
-Les tests fonctionnent hors réseau, sans modèle, compte ni image réelle. Ils contrôlent les scénarios fictifs, les limites de prix, la provenance, les défauts, les actions permises et les outils locaux. Ils ne démontrent ni le comportement d'un modèle ni le fonctionnement réel de Vinted. Le [plan de validation](docs/VALIDATION.md) décrit les essais manuels restants.
+Les tests vérifient les formats des archives, la concordance des manifestes, le document complet, les empreintes, les scénarios fictifs de prix et de provenance, ainsi que les outils locaux. Ils fonctionnent hors réseau, sans modèle, compte ni image réelle. Ils ne prouvent pas un import dans un compte Claude ou ChatGPT, ni le préremplissage réel de Vinted. Le [plan de validation](docs/VALIDATION.md) décrit les essais manuels par assistant et appareil.
 
-La CI GitHub exécute la suite sous Linux, macOS et Windows avec Python 3.10 et 3.14. La vérification facultative ci-dessous nécessite une CLI Codex installée et ne lance aucun modèle :
+La CI exécute la suite sous Linux, macOS et Windows avec Python 3.10 et 3.14, puis génère les paquets. La découverte locale Codex peut aussi être vérifiée, sans lancer de modèle :
 
 ```sh
 python3 tools/verify_discovery.py
 ```
 
-Elle interroge les métadonnées locales `initialize` et `skills/list`, vérifie que le skill découvert appartient à ce projet et écrit sa preuve dans le rapport ignoré `livrables/installation-local.json`. Le serveur Codex peut initialiser ses fichiers d'état dans le profil utilisateur ; la commande ne se connecte pas à Vinted.
+Cette commande facultative exige une CLI Codex installée. Elle contrôle les métadonnées du skill de ce projet et écrit sa preuve dans `livrables/installation-local.json`. Le serveur Codex peut initialiser ses fichiers d'état dans le profil utilisateur ; aucun compte Vinted n'est ouvert.
 
 ## Contenu du dépôt
 
 | Chemin | Rôle |
 | --- | --- |
-| `skills/vinted-prepare-listing/` | Instructions, métadonnées et références, sans programme embarqué. |
-| `plugin.json` | Manifeste du paquet ; la disponibilité d'une installation par plugin dépend de l'hôte. |
-| `tools/` | Installation locale, vérification de découverte et lancement des tests. |
-| `tests/` | Scénarios fictifs et tests de régression des outils. |
-| `docs/` | Plan de validation et revue avant publication du dépôt. |
+| `skills/vinted-prepare-listing/` | Source commune des instructions et références. |
+| `plugin.json` | Manifeste portable Agent Plugins pour ChatGPT/Codex. |
+| `.claude-plugin/` | Manifeste Claude et catalogue importable depuis GitHub. |
+| `docs/assistant-instructions.md` | Document mobile complet généré depuis le skill. |
+| `tools/` | Génération des paquets, installation locale et vérification. |
+| `tests/` | Scénarios fictifs et tests des outils et formats. |
+| `docs/` | Plan de validation et revue du dépôt. |
 
-Les documents de travail d'origine, les rapports d'exécution, les photos et les installations locales restent hors du dépôt. Le projet n'est pas affilié à Vinted. Contributions : [CONTRIBUTING.md](CONTRIBUTING.md). Réutilisation et modification : [licence MIT](LICENSE).
+Les photos, rapports d'exécution, documents de travail et installations locales restent hors du dépôt. Le projet n'est affilié ni à Vinted, ni à OpenAI, ni à Anthropic. Contributions : [CONTRIBUTING.md](CONTRIBUTING.md). Réutilisation : [licence MIT](LICENSE).

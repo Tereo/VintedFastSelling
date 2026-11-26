@@ -1,6 +1,6 @@
 # Revue avant publication du dépôt
 
-Revue du 26 novembre 2026 : instructions du skill et références, manifeste, scripts Python, oracle des scénarios, tests et fichiers destinés au dépôt. Les documents de travail et rapports propres à la machine restent dans `livrables/`, hors Git.
+Revue initiale du 26 novembre 2026 : instructions du skill et références, manifeste, scripts Python, oracle des scénarios, tests et fichiers destinés au dépôt. Les résultats chiffrés ci-dessous décrivent cette revue initiale. Les documents de travail et rapports propres à la machine restent dans `livrables/`, hors Git.
 
 ## Problèmes corrigés
 
@@ -28,3 +28,9 @@ Une licence MIT accompagne les sources. La CI utilise des actions officielles é
 Les tests du projet contrôlent des traces structurées fictives et les outils locaux. Ils ne font pas exécuter le skill par un modèle. La qualité de l'analyse des photos, le préremplissage réel de Vinted, la sauvegarde et l'installation Android nécessitent les essais du [plan de validation](VALIDATION.md).
 
 Le `.gitignore` prévient l'ajout accidentel des emplacements connus de secrets et de données locales. Les fichiers et les nouveaux chemins restent à relire avant chaque commit.
+
+## Extension Claude et ChatGPT
+
+La version 0.3.0 ajoute les manifestes et le catalogue Claude, un ZIP de skill Claude, un ZIP de plugin portable et un document complet à joindre dans une conversation. Les sources restent communes dans `skills/` ; le générateur contrôle les identités, inclut les références et la licence, refuse les ressources symboliques et exclut les fichiers locaux non prévus. Les tests contrôlent ces livrables et la fraîcheur du document suivi.
+
+Les parcours d'installation sont documentés à partir des guides officiels OpenAI et Anthropic consultés le 26 novembre 2026. Les imports dans les comptes Claude/ChatGPT, les capacités de chaque app mobile et le préremplissage réel restent les essais séparés du [plan de validation](VALIDATION.md).

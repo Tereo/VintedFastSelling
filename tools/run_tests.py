@@ -29,7 +29,7 @@ def main():
             "kind": "offline-contract-simulation", "tests_run": result.testsRun,
             "failures": len(result.failures), "errors": len(result.errors), "successful": result.wasSuccessful(),
             "limits": ["Aucun LLM exécuté par le banc", "Aucune image réellement analysée", "Aucun appel Vinted",
-                       "Aucune recette Android ou navigateur réel", "La sémantique libre des textes nécessite une recette humaine"],
+                       "Aucun import réel dans Claude ou ChatGPT mobile, ni navigateur réel", "La sémantique libre des textes nécessite une recette humaine"],
             "skill_sha256": {p.relative_to(source).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
                              for p in sorted(source.rglob("*")) if p.is_file()},
             "scenarios": [{"id": c["id"], "title": c["title"], "requirements": c["requirements"],

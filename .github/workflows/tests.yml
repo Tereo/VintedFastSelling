@@ -29,3 +29,30 @@ jobs:
           python-version: ${{ matrix.python }}
       - name: Tests hors réseau
         run: python tools/run_tests.py --report reports/tests-results.json
+
+  packages:
+    name: Paquets Claude et ChatGPT
+    needs: tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.14'
+      - name: Vérifier le document mobile publié
+        run: python tools/build_packages.py --check
+      - name: Générer les imports et leurs empreintes
+        run: python tools/build_packages.py
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: vinted-claude-chatgpt
+          path: |
+            dist/vinted-prepare-listing-claude.zip
+            dist/vinted-prepare-listing-plugin.zip
+            dist/vinted-prepare-listing-instructions.md
+            dist/SHA256SUMS
+          if-no-files-found: error
+          retention-days: 30

@@ -20,4 +20,4 @@ Identifier la référence seulement si elle est lisible ou déclarée. Énumére
 
 Utiliser les originaux fournis pour cet article. Choisir une vue entière comme première photo lorsqu’elle est disponible et adaptée ; sinon demander cette vue. Conserver les vues des défauts. Aucun enrichissement génératif ni photo commerciale. Si la limite observée du formulaire est inférieure au nombre de photos, proposer une sélection qui conserve les défauts et demander l’arbitrage utile ; ne pas annoncer que toutes les photos sont jointes.
 
-Une photo contenant une adresse, une étiquette de livraison ou un visage inutile doit être remplacée par une photo adaptée avant téléversement. Ne pas promettre une suppression de l’original dans ChatGPT ou Vinted.
+Une photo contenant une adresse, une étiquette de livraison ou un visage inutile doit être remplacée par une photo adaptée avant téléversement. Ne pas promettre une suppression de l’original dans Claude, ChatGPT ou Vinted.

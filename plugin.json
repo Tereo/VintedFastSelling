@@ -1,14 +1,21 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "vinted-prepare-listing",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Préparer une annonce Vinted France depuis les photos d’un vêtement ou jouet, sans publication automatique.",
+  "author": {"name": "Tereo"},
+  "repository": "https://github.com/Tereo/VintedFastSelling",
+  "homepage": "https://github.com/Tereo/VintedFastSelling#readme",
+  "license": "MIT",
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "Préparer une annonce Vinted",
-        "shortDescription": "Photos, fiche exacte et préremplissage sans publier",
-        "defaultPrompt": ["Vends ça sur Vinted."]
+        "shortDescription": "Annonces depuis vos photos",
+        "longDescription": "Préparez une annonce Vinted France de vêtement ou de jouet depuis vos photos, dans ChatGPT ou Claude. Le skill rédige le titre, la description et les champs à recopier. Le préremplissage dépend des outils de navigation et de transfert de photos disponibles dans votre assistant. Vous vérifiez et publiez vous-même.",
+        "developerName": "Tereo",
+        "category": "Productivity",
+        "defaultPrompt": ["Prépare ce produit pour Vinted.", "Vends ça sur Vinted."]
       }
     }
   }

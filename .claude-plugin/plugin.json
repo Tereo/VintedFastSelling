@@ -1,0 +1,9 @@
+{
+  "name": "vinted-prepare-listing",
+  "version": "0.3.0",
+  "description": "Préparer une annonce Vinted France depuis les photos d’un vêtement ou jouet, sans publication automatique.",
+  "author": {"name": "Tereo"},
+  "repository": "https://github.com/Tereo/VintedFastSelling",
+  "homepage": "https://github.com/Tereo/VintedFastSelling#readme",
+  "license": "MIT"
+}

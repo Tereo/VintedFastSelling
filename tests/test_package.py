@@ -18,7 +18,7 @@ class PackageTests(unittest.TestCase):
         pairs = dict(line.split(": ", 1) for line in match.group(1).splitlines())
         self.assertEqual({"name", "description"}, set(pairs))
         self.assertEqual("vinted-prepare-listing", pairs["name"])
-        self.assertLessEqual(len(pairs["description"]), 1024)
+        self.assertLessEqual(len(pairs["description"]), 200)
         self.assertNotIn("[TODO:", text)
         for line in (SOURCE / "agents/openai.yaml").read_text(encoding="utf-8").splitlines()[1:]:
             _, value = line.strip().split(": ", 1)

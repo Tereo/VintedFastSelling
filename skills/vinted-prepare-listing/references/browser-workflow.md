@@ -4,7 +4,7 @@
 
 Pour chaque point effectivement vérifié, noter dans la conversation la date, la surface, les versions visibles si disponibles, le résultat et une preuve minimale non sensible. Ne jamais inventer une version ou transformer un scénario simulé en vérification réelle.
 
-- G1 : inventorier les outils documentés réellement disponibles, la surface cloud ou bureau choisie et la réception des photos. Une installation locale ne prouve ni l’accès au skill sur Android ni sa distribution sur le compte. Ne pas installer d’extension Android ni supposer Chrome mobile pilotable.
+- G1 : inventorier les outils documentés réellement disponibles, l’assistant et la surface cloud ou bureau choisis, ainsi que la réception des photos. Une installation locale ne prouve ni l’accès au skill sur mobile ni sa distribution dans Claude ou ChatGPT. Ne pas installer d’extension mobile ni supposer Chrome ou Safari du téléphone pilotable.
 - G2 : le mode préremplissage défini par [la demande utilisateur](../SKILL.md), par exemple « vends ça sur Vinted », autorise le navigateur et le préremplissage de l’article concerné sur son compte, y compris les photos fournies, la recherche de prix utile et la sauvegarde en brouillon lorsqu’elle existe. Le mode texte uniquement, par exemple « prépare ce produit pour Vinted », exclut ces interactions. Respecter le périmètre déjà autorisé sans redemander un accord ni une preuve distincte émanant de Vinted. Cette règle ne prétend pas établir une autorisation contractuelle de la plateforme et ne permet aucun contournement d’une restriction constatée.
 - G3 : pendant le parcours demandé, vérifier connexion sécurisée, accès au formulaire, transfert réel des photos et conservation observable pour reprise manuelle. Un point non testé signifie parcours non validé ; une étape tentée sans succès signifie résultat partiel. Une demande de l’utilisateur de reprendre l’essai ici autorise la poursuite de cet essai dans l’environnement courant.
 
@@ -14,7 +14,7 @@ Le skill n’apporte pas de navigateur absent. Découvrir et employer exclusivem
 
 Observer les éléments visibles du compte et l’accès vendeur. L’URL, un chargement de page ou la déclaration « je suis connecté » ne suffisent pas à vérifier la session.
 
-Si déconnecté, ouvrir le parcours officiel et rendre la main dans l’interface sécurisée disponible sur la surface choisie. Ne demander, lire ou journaliser aucun mot de passe, code MFA, cookie ou jeton. Reprendre seulement après observation du compte et du formulaire. Si la connexion nécessite un ordinateur inaccessible à l’utilisateur Android, annoncer le blocage.
+Si déconnecté, ouvrir le parcours officiel et rendre la main dans l’interface sécurisée disponible sur la surface choisie. Ne demander, lire ou journaliser aucun mot de passe, code MFA, cookie ou jeton. Reprendre seulement après observation du compte et du formulaire. Si la connexion nécessite un appareil inaccessible à l’utilisateur, annoncer le blocage.
 
 CAPTCHA, MFA et contrôle d’identité nécessitent la main de l’utilisateur. Une restriction, un refus d’automatisation ou une modération provoquent l’arrêt des actions ; aucune relance automatique, usurpation de navigateur ou résolution par un service tiers. Ne reprendre qu’après résolution réelle et nouvelle observation, dans la limite de l’autorisation G2.
 
@@ -44,7 +44,7 @@ Vérifier que les pièces jointes accessibles à la vision sont aussi transféra
 
 Relire le titre, la description complète, la catégorie, tous les attributs requis, l’état, le colis et le prix. Comparer avec la fiche et les photos prévues. Un champ masqué ou non vérifié empêche d’annoncer un formulaire vérifié. Si la sauvegarde du brouillon n’est pas explicitement distincte d’une publication, ne pas activer le bouton ambigu.
 
-Sauvegarder seulement si une fonction de brouillon existe réellement. Déclarer « brouillon vérifié » uniquement après constat de sa présence persistante ou réouverture avec contrôle des valeurs et photos. Sinon annoncer « formulaire vérifié » ou « formulaire partiel », et préciser que la persistance et la reprise depuis Chrome Android ne sont pas garanties. Ne pas présenter l’URL privée comme un lien public.
+Sauvegarder seulement si une fonction de brouillon existe réellement. Déclarer « brouillon vérifié » uniquement après constat de sa présence persistante ou réouverture avec contrôle des valeurs et photos. Sinon annoncer « formulaire vérifié » ou « formulaire partiel », et préciser que la persistance et la reprise depuis un autre appareil ou assistant ne sont pas garanties. Ne pas présenter l’URL privée comme un lien public.
 
 Ne jamais activer Publier ou une commande équivalente. La publication manuelle reste à l’utilisateur, même si une demande ultérieure emploie « vas-y », « termine » ou « publie ». Ne pas activer de promotion ou d’option payante.
 

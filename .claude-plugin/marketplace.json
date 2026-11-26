@@ -1,0 +1,12 @@
+{
+  "name": "vinted-fast-selling",
+  "description": "Préparer des annonces Vinted France avec Claude ou ChatGPT depuis les photos d’un vêtement ou jouet.",
+  "owner": {"name": "Tereo"},
+  "plugins": [
+    {
+      "name": "vinted-prepare-listing",
+      "source": "./",
+      "description": "Préparer une annonce Vinted France depuis vos photos, sans publication automatique."
+    }
+  ]
+}

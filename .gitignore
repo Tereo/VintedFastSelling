@@ -20,6 +20,7 @@ dist/
 # Installation, configuration et état propres à chaque machine
 /.agents/
 /.codex/
+/.claude/
 /.aws/
 /.ssh/
 .idea/

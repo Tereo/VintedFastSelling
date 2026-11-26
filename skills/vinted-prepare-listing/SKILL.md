@@ -1,11 +1,15 @@
 ---
 name: vinted-prepare-listing
-description: Préparer une annonce Vinted France de vêtement ou jouet depuis ses photos. Utiliser pour « vends ça sur Vinted » (fiche et préremplissage sans publier), « prépare ce produit pour Vinted » (texte uniquement), leurs formulations proches et les reprises, sans exiger le nom du skill.
+description: Préparer une annonce Vinted France depuis les photos d’un vêtement ou jouet. Pour « vends ça sur Vinted » (préremplissage sans publier), « prépare ce produit pour Vinted » (texte seul) et variantes.
 ---
 
 # Préparer une annonce Vinted
 
 Transformer les photos originales d’un article en une fiche exacte en français et en EUR. L’utilisateur vérifie et publie lui-même. Un lot de photos correspond à un article vendu, y compris les composants d’un même jouet. Garder la fiche utile lorsque le navigateur est inaccessible.
+
+## Utiliser les ressources
+
+Ces instructions sont communes à Claude, ChatGPT et Codex, sur mobile, web ou bureau. Lire les références avec les outils de lecture effectivement disponibles. Si elles sont réunies dans un document joint, consulter les sections correspondantes de ce document. Un lien vers le dépôt ne prouve ni la lecture des fichiers ni l’installation du skill. Si une référence requise est inaccessible, demander le document complet et conserver les observations déjà faites, sans inventer les règles manquantes. Le skill ne fournit pas les outils absents de l’assistant.
 
 ## Comprendre la demande
 
@@ -19,7 +23,7 @@ Une précision explicite comme « texte seulement » ou « préremplis Vinted »
 ## Périmètre et décisions essentielles
 
 - Ne jamais activer Publier, mettre en vente, valider une publication ou leur équivalent, même après une demande ultérieure de publication. Expliquer que ce skill s’arrête avant cette action manuelle. Aucun achat, paiement, message, négociation, boost, promotion, suppression ou republication.
-- Ne pas créer d’inventaire, de mémoire entre conversations ou d’automatisation récurrente. Aucune dépendance à installer, clé API, serveur, extension Android ou ordinateur personnel allumé.
+- Ne pas créer d’inventaire, de mémoire entre conversations ou d’automatisation récurrente. Aucune dépendance d’exécution, clé API ou serveur propre au skill. Ne pas exiger d’extension mobile ou d’ordinateur personnel allumé pour préparer la fiche ; les prérequis d’importation appartiennent à l’assistant hôte.
 - Distinguer ce que l’utilisateur déclare, ce qu’une photo montre, ce que Vinted affiche et ce qui est proposé. Une matière, marque, taille, complétude, absence de défaut ou fonctionnement probables restent inconnus.
 - Le prix utilisateur prime ; sinon utiliser la borne haute d’une fourchette Vinted réellement visible et pertinente ; sinon rechercher des comparables. Lire [pricing.md](references/pricing.md) avant toute décision de prix.
 - Le mode préremplissage choisi selon la demande ci-dessus autorise l’ouverture de Vinted et le préremplissage de cet article sur le compte de l’utilisateur, avec les photos fournies et les valeurs établies. Cette autorisation persiste lors de la reprise ; ne pas la redemander. Le mode texte uniquement exclut ces interactions. Ne pas exiger de preuve d’autorisation distincte émanant de Vinted avant d’ouvrir le navigateur. Respecter les restrictions effectivement rencontrées sur le site, sans contournement.
@@ -35,9 +39,9 @@ Une précision explicite comme « texte seulement » ou « préremplis Vinted »
 
 ## Choisir le mode et poursuivre
 
-Le mode nominal vise Work sur Android avec le navigateur cloud disponible sur le compte. Ne pas supposer que Chrome du téléphone est pilotable, qu’une session locale existe dans le cloud ou qu’un fichier local est accessible depuis Android. Le bureau est un mode distinct à utiliser seulement s’il est choisi.
+Utiliser l’environnement choisi par l’utilisateur, notamment Claude ou ChatGPT sur téléphone. En préremplissage mobile, employer le navigateur cloud s’il est réellement disponible sur le compte. Ne pas supposer que Chrome ou Safari du téléphone est pilotable, qu’une session locale existe dans le cloud ou qu’un fichier de l’ordinateur est accessible depuis le téléphone. Le bureau et l’accès à distance sont des options à utiliser seulement s’ils sont choisis.
 
-En mode texte uniquement, livrer la fiche sans ouvrir Vinted. En mode préremplissage, inventorier les outils effectivement exposés, lire [browser-workflow.md](references/browser-workflow.md) et poursuivre dans le navigateur disponible. Vérifier le périmètre de la demande (G2) et observer les capacités G1/G3. Une demande d’essai « ici » sélectionne l’environnement courant ; ne pas imposer un passage sur Android pour un essai local. Si une capacité manque, livrer la fiche et annoncer précisément la limite. Ne jamais déclarer la chaîne Android validée à partir d’une installation locale.
+En mode texte uniquement, livrer la fiche sans ouvrir Vinted. En mode préremplissage, inventorier les outils effectivement exposés, lire [browser-workflow.md](references/browser-workflow.md) et poursuivre dans le navigateur disponible. Vérifier le périmètre de la demande (G2) et observer les capacités G1/G3. Une demande d’essai « ici » sélectionne l’environnement courant ; ne pas imposer un autre appareil. Si une capacité manque, livrer la fiche et annoncer précisément la limite. Une installation ou un essai sur une plateforme ne valide pas les autres assistants, comptes ou appareils.
 
 Vérifier la session, les doublons, le transfert des photos et les options actuelles du formulaire. Appliquer les valeurs établies, une saisie à la fois, avec la cadence variable et les attentes d’interface décrites dans le parcours navigateur. Vérifier les dépendances après le choix de catégorie, puis déterminer le prix selon sa priorité. Ne pas terminer à la seule fiche texte si le parcours navigateur est demandé, disponible et sans blocage observé. Un prix temporaire inventé est interdit. Une interruption commence par l’observation de l’état existant. Ne jamais garantir que les délais rendent l’agent indétectable.
 
@@ -52,6 +56,6 @@ Présenter une fiche facile à recopier : titre, description, champs, prix et or
 | Formulaire vérifié | Tous les champs requis et les vignettes attendues ont été relus dans l’interface ; persistance non garantie. |
 | Brouillon vérifié | Résultat précédent et sauvegarde constatée par présence du brouillon ou réouverture. |
 
-Préciser la prochaine action manuelle. Une URL privée n’est pas un lien public partageable ; une page transitoire n’est pas un brouillon sauvegardé ni une garantie de reprise sur Android. Pour reprendre, relire la fiche et l’interface avant de saisir ou téléverser de nouveau. Ne pas promettre de mémoire entre chats ni de suppression des pièces jointes, historiques ou cookies gérés par les plateformes. Si l’utilisateur demande d’enregistrer une fiche, limiter le contenu et la destination à ce besoin explicite, sans secret.
+Préciser la prochaine action manuelle. Une URL privée n’est pas un lien public partageable ; une page transitoire n’est pas un brouillon sauvegardé ni une garantie de reprise sur un autre appareil. Pour reprendre, relire la fiche et l’interface avant de saisir ou téléverser de nouveau. Ne pas promettre de mémoire entre chats ni de suppression des pièces jointes, historiques ou cookies gérés par les plateformes. Si l’utilisateur demande d’enregistrer une fiche, limiter le contenu et la destination à ce besoin explicite, sans secret.
 
 Pour une simulation demandée, identifier les observations comme fictives. Le [contrat de validation](references/validation-contract.json) définit les valeurs structurées admises par le banc de tests du projet ; il ne pilote pas un navigateur et ne prouve pas le respect des instructions par un modèle.
