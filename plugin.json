@@ -8,7 +8,7 @@
       "interface": {
         "displayName": "Préparer une annonce Vinted",
         "shortDescription": "Photos, fiche exacte et préremplissage sans publier",
-        "defaultPrompt": ["Prépare une annonce Vinted avec les photos de cet article, sans la publier."]
+        "defaultPrompt": ["Vends ça sur Vinted."]
       }
     }
   }

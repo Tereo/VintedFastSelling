@@ -30,6 +30,10 @@ Ces essais utilisent les photos et le compte de la personne qui les demande. Ils
 
 | Cas | Résultat à observer |
 | --- | --- |
+| Photos + « vends ça sur Vinted » ou « vend ca sur vinted » | Skill reconnu sans son nom ; fiche puis préremplissage si disponible, publication laissée à l’utilisateur. |
+| Photos + « prépare ce produit pour Vinted » | Skill reconnu sans son nom ; texte et champs à recopier, sans ouverture de Vinted. |
+| Photos + « vends ça sur Vinted à 12,50 €. Porté deux fois. » | Prix conservé et état déclaré pris en compte sans demander de reformuler la commande. |
+| « Vends ça sur Vinted, texte seulement » / « prépare ce produit pour Vinted et préremplis Vinted » | La précision explicite choisit respectivement le texte seul / le préremplissage. |
 | Vêtement, étiquette lisible, prix `12,50 €` | Taille exacte, prix conservé, défauts décrits. |
 | Jouet incomplet ou non testé | Pièces manquantes explicites, questions sur les accessoires et le fonctionnement. |
 | Étiquette illisible ou contradiction | Information laissée inconnue et question utile, sans invention. |

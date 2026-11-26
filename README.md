@@ -30,25 +30,33 @@ python3 tools/install_local.py --copy
 
 L'installateur ne remplace jamais un contenu existant différent et ne modifie pas la configuration globale. Le dossier `livrables/` et son rapport d'installation sont créés localement et ignorés par Git.
 
-Ouvrir un chat Codex associé au dossier du projet. Si nécessaire, rouvrir le chat après l'installation, puis sélectionner `vinted-prepare-listing` ou l'invoquer par son nom.
+Ouvrir un chat Codex associé au dossier du projet. Si nécessaire, rouvrir le chat après l'installation. Le skill peut alors être utilisé avec une demande en langage courant, comme ci-dessous.
 
 Après une mise à jour des sources, le lien utilise directement les nouvelles instructions. Avec une copie, `--check` détecte les différences : conserver les éventuelles modifications locales, retirer l'ancienne copie puis relancer `--copy`. Pour désinstaller, retirer uniquement le lien ou la copie `.agents/skills/vinted-prepare-listing` et conserver `skills/`.
 
 ## Utilisation
 
-Joindre les photos originales d'un article, puis envoyer par exemple :
+Une fois le skill installé et disponible dans le chat, joindre les photos originales d'un seul article et écrire :
 
 ```text
-Utilise $vinted-prepare-listing pour préparer l'annonce de cet article.
-Mon prix est 12,50 €. Préremplis Vinted, sans publier.
+Vends ça sur Vinted.
 ```
 
-Pour préparer uniquement le texte :
+Le skill prépare l'annonce et préremplit Vinted si les outils le permettent. Vous vérifiez et publiez vous-même.
+
+Pour obtenir uniquement le texte, sans ouvrir Vinted :
 
 ```text
-Utilise $vinted-prepare-listing : fiche hors site uniquement.
-Voici les photos d'un jouet. Demande-moi ce qui manque.
+Prépare ce produit pour Vinted.
 ```
+
+Le prix et les autres informations sont facultatifs. Par exemple :
+
+```text
+Vends ça sur Vinted à 12,50 €. Porté deux fois.
+```
+
+Pas besoin de citer le nom du skill ni de reprendre ces phrases mot pour mot : « vend ca sur vinted » convient aussi. Le skill examine les photos, utilise les précisions fournies et demande seulement les informations utiles qui manquent.
 
 Le résultat distingue une fiche préparée, un formulaire partiel, un formulaire vérifié et un brouillon dont la sauvegarde a été constatée. Le skill s'arrête devant une connexion à effectuer, un CAPTCHA ou une restriction du site, sans contournement. Une pause entre les saisies ne garantit aucune propriété anti-détection.
 

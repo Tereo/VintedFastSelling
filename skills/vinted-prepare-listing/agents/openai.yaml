@@ -1,4 +1,4 @@
 interface:
   display_name: "Préparer une annonce Vinted"
   short_description: "Photos, fiche exacte et préremplissage sans publier"
-  default_prompt: "Utilise $vinted-prepare-listing pour préparer une annonce à partir de mes photos, sans la publier."
+  default_prompt: "Vends ça sur Vinted avec $vinted-prepare-listing."
