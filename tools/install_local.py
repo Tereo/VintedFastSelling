@@ -50,8 +50,8 @@ def install(source, destination, *, copy=False):
     else:
         try:
             destination.symlink_to(os.path.relpath(source, destination.parent.resolve()), target_is_directory=True)
-        except OSError:
-            # Windows peut refuser les liens sans mode développeur ou privilège.
+        except (OSError, ValueError):
+            # Windows peut refuser les liens ou les chemins relatifs entre disques.
             # Ne jamais remplacer une destination apparue entre-temps.
             if os.path.lexists(destination):
                 raise
@@ -77,7 +77,7 @@ def main():
             "checked_at_utc": datetime.now(timezone.utc).isoformat(),
             "scope": "local-repository", "path": str(destination), "source": str(SOURCE),
             "installation_method": "symlink" if destination.is_symlink() else "copy",
-            "files_sha256": {str(p.relative_to(SOURCE)): hashlib.sha256(p.read_bytes()).hexdigest()
+            "files_sha256": {p.relative_to(SOURCE).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
                              for p in sorted(SOURCE.rglob("*")) if p.is_file()},
             "android_installation_verified": False, "vinted_live_test_executed": False
         }

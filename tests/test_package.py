@@ -40,7 +40,7 @@ class PackageTests(unittest.TestCase):
         self.assertNotIn("hooks", manifest.get("extensions", {}).get("com.openai", {}))
 
     def test_installed_payload_has_no_executable_dependency(self):
-        files = {str(p.relative_to(SOURCE)) for p in SOURCE.rglob("*") if p.is_file()}
+        files = {p.relative_to(SOURCE).as_posix() for p in SOURCE.rglob("*") if p.is_file()}
         self.assertEqual(files, {
             "SKILL.md", "agents/openai.yaml", "references/item-fields.md", "references/clothing-and-toys.md",
             "references/pricing.md", "references/browser-workflow.md", "references/validation-contract.json"
@@ -104,6 +104,14 @@ class PackageTests(unittest.TestCase):
         with TemporaryDirectory() as temp:
             destination = Path(temp) / "fallback"
             with patch.object(Path, "symlink_to", side_effect=OSError("Symlink unavailable")):
+                install(SOURCE, destination)
+            self.assertFalse(destination.is_symlink())
+            self.assertTrue(matches_source(SOURCE, destination))
+
+    def test_copy_fallback_between_windows_drives(self):
+        with TemporaryDirectory() as temp:
+            destination = Path(temp) / "other-drive"
+            with patch("tools.install_local.os.path.relpath", side_effect=ValueError("Different drives")):
                 install(SOURCE, destination)
             self.assertFalse(destination.is_symlink())
             self.assertTrue(matches_source(SOURCE, destination))
