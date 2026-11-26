@@ -1,0 +1,13 @@
+{
+  "version": "1.1",
+  "purpose": "Vocabulaire des traces de simulation, sans exécution du skill ni du navigateur",
+  "origins": ["user", "photo", "vinted", "comparables", "suggestion"],
+  "validations": ["confirmed", "observed", "proposed", "pending"],
+  "states": ["photos_received", "analyzed", "info_required", "ready", "browser_unavailable", "login_required", "form_in_progress", "form_verified", "draft_verified", "user_action_required"],
+  "results": ["prepared", "partial_form", "verified_form", "verified_draft"],
+  "allowed_actions": ["observe_session", "open_login", "handoff", "user_resolved", "inspect_existing", "user_duplicate_check", "authorize_existing", "open_form", "select_category", "set_field", "search_market", "present_price", "upload", "verify_upload", "verify_form", "save_draft", "observe_draft", "error", "observe_recovery", "retry", "report"],
+  "vinted_actions": ["observe_session", "open_login", "inspect_existing", "open_form", "select_category", "set_field", "upload", "verify_upload", "verify_form", "save_draft", "observe_draft", "observe_recovery", "retry"],
+  "blocking_errors": ["captcha", "mfa", "identity", "restriction", "moderation", "refused"],
+  "max_transient_retries": 1,
+  "currency": "EUR"
+}
