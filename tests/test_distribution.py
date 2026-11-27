@@ -76,6 +76,19 @@ class DistributionTests(unittest.TestCase):
         self.assertEqual(json.loads((self.skill / "references/validation-contract.json").read_text(encoding="utf-8")),
                          json.loads(contract_text))
 
+    def test_windows_line_endings_do_not_change_the_complete_document(self):
+        self.build()
+        expected = (self.output / INSTRUCTIONS).read_bytes()
+        sources = [self.root / "plugin.json", self.root / "LICENSE"]
+        for directory in (self.skill, self.root / ".claude-plugin"):
+            sources.extend(path for path in directory.rglob("*") if path.is_file())
+        for path in sources:
+            content = path.read_bytes().replace(b"\r\n", b"\n")
+            path.write_bytes(content.replace(b"\n", b"\r\n"))
+        self.build()
+        self.assertEqual(expected, (self.output / INSTRUCTIONS).read_bytes())
+        check_sources(self.root)
+
     def test_generation_excludes_unlisted_local_files_and_preserves_sources(self):
         for relative in (".env", "photos/article.jpg", "skills/vinted-prepare-listing/notes-privees.txt"):
             path = self.root / relative
@@ -111,7 +124,8 @@ class DistributionTests(unittest.TestCase):
 
     def test_unbundled_reference_cannot_produce_an_incomplete_document(self):
         path = self.skill / "SKILL.md"
-        path.write_text(path.read_text(encoding="utf-8") + "\nLire [autre règle](references/absent.md).\n", encoding="utf-8")
+        content = path.read_text(encoding="utf-8") + "\nLire [autre règle](references/absent.md).\n"
+        path.write_bytes(content.replace("\n", "\r\n").encode("utf-8"))
         with self.assertRaisesRegex(ValueError, "Référence absente"):
             self.build()
         self.assertFalse(self.output.exists())

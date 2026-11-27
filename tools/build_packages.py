@@ -68,7 +68,7 @@ def validate_sources(files):
             or catalog["plugins"][0].get("name") != NAME
             or catalog["plugins"][0].get("source") != "./"):
         raise ValueError("Le catalogue doit découvrir le plugin à la racine du dépôt.")
-    text = files[SKILL_PREFIX + "SKILL.md"].decode("utf-8")
+    text = files[SKILL_PREFIX + "SKILL.md"].decode("utf-8").replace("\r\n", "\n")
     header = re.match(r"^---\n(.*?)\n---\n", text, re.DOTALL)
     if header is None:
         raise ValueError("Frontmatter du skill absent.")
@@ -85,7 +85,7 @@ def section_anchor(relative):
 
 def render_instructions(files, version):
     """Réunir les références et remplacer leurs liens par des liens internes."""
-    documents = {p: files[SKILL_PREFIX + p].decode("utf-8")
+    documents = {p: files[SKILL_PREFIX + p].decode("utf-8").replace("\r\n", "\n")
                  for p in SKILL_FILES if p.endswith((".md", ".json"))}
     parts = [
         "# Préparer une annonce Vinted — Claude et ChatGPT\n\n"
@@ -128,7 +128,8 @@ def render_instructions(files, version):
             json.loads(content)
             content = f"```json\n{content.rstrip()}\n```"
         parts.append(f'\n<a id="{section_anchor(relative)}"></a>\n\n## {relative}\n\n{content.strip()}\n')
-    parts.append("\n## Licence\n\n```text\n" + files["LICENSE"].decode("utf-8").rstrip() + "\n```\n")
+    license_text = files["LICENSE"].decode("utf-8").replace("\r\n", "\n")
+    parts.append("\n## Licence\n\n```text\n" + license_text.rstrip() + "\n```\n")
     return "\n".join(parts).encode("utf-8")
 
 
