@@ -15,6 +15,8 @@ Conserver la priorité du prix utilisateur, la provenance des informations, les 
 
 Les instructions communes à Claude et ChatGPT restent dans `skills/`. Après modification, lancer `python3 tools/build_packages.py` et inclure la mise à jour générée de `docs/assistant-instructions.md` dans la proposition. Ne pas modifier ce document à la main ni ajouter les ZIP de `dist/` au dépôt. Garder les identités et versions de `plugin.json` et `.claude-plugin/plugin.json` cohérentes. Le catalogue `.claude-plugin/marketplace.json` pointe vers ce plugin unique à la racine.
 
+Les instructions personnalisées courtes sont dans `docs/chatgpt-custom-instructions.txt` et dans le premier bloc de texte du README. Garder ces deux contenus identiques et sous 1 500 caractères. Le parcours mobile du README doit rester utilisable par copie directe depuis la page GitHub ; les liens de téléchargement publics pointent vers les fichiers d’une Release.
+
 Utiliser uniquement des données fictives dans les tests. Les photos, documents de travail, rapports locaux, cookies, jetons, fichiers `.env` et fichiers de configuration personnels ne doivent pas être ajoutés aux commits. Les dossiers prévus pour ces fichiers sont décrits dans `.gitignore`. Toute donnée réelle utile à un diagnostic doit être remplacée par un exemple anonymisé.
 
 Les contributions sont proposées sous la [licence MIT](LICENSE) du projet.

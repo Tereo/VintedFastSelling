@@ -1,55 +1,51 @@
 # VintedFastSelling
 
-Un skill en français pour **Claude, ChatGPT et Codex**, qui prépare une annonce Vinted France de vêtement ou de jouet depuis les photos d'un seul article. Les trois utilisent les mêmes instructions et références. **La publication reste manuelle.**
+Préparer une annonce **Vinted France depuis ses photos**, sur téléphone avec ChatGPT ou Claude : titre, description et champs à recopier. Pour un vêtement ou un jouet à la fois. **Vous vérifiez et publiez vous-même.**
 
 Le prix fourni par l'utilisateur est prioritaire. Sinon, l'assistant cherche une fourchette Vinted réellement visible et pertinente, puis des comparables sourcés si nécessaire. Il demande les informations utiles qui manquent et décrit les défauts connus.
 
-## Configurer ChatGPT sur mobile sans catalogue
+## Démarrer dans ChatGPT sur téléphone
 
-Les instructions personnalisées sont disponibles sur iOS et Android. Un projet ChatGPT permet de garder les instructions et les fichiers propres à Vinted. Cette configuration ne nécessite pas de soumission au catalogue. [Instructions personnalisées OpenAI](https://help.openai.com/fr-fr/articles/8096356-chatgpt-custom-instructions), [projets ChatGPT](https://help.openai.com/en/articles/10169521-projects-in-chatgpt).
+Cette page GitHub contient tout le texte à copier. La configuration se fait une fois dans les réglages de votre compte ChatGPT.
 
-### Configuration recommandée : un projet Vinted
+1. **Copier tout le bloc ci-dessous.** Utiliser le bouton de copie du bloc lorsqu’il est proposé, ou sélectionner son texte.
+2. **[Ouvrir ChatGPT](https://chatgpt.com/)**, puis **Paramètres → Personnaliser ChatGPT → Instructions personnalisées**. Activer la personnalisation, coller le texte et enregistrer. Conserver vos autres préférences utiles dans la limite du champ.
+3. **Ouvrir une nouvelle discussion**, joindre les photos de l’article et écrire **« Prépare ce produit pour Vinted »**. Ajouter le prix, la taille ou l’état si connus.
 
-1. Dans ChatGPT sur téléphone, ouvrir les projets et créer **Vinted**. Selon l’interface, les projets se trouvent dans la barre latérale, dans **Explorer → Projets** ou dans **Plus de ChatGPT** sur Android.
-2. Enregistrer le fichier [assistant-instructions.md](docs/assistant-instructions.md), puis l’ajouter comme fichier du projet. Le lien GitHub seul ne remplace pas cet ajout.
-3. Dans le menu **••• → Paramètres du projet**, copier le texte des [instructions courtes](docs/chatgpt-custom-instructions.txt) dans le champ d’instructions du projet.
-4. Pour chaque article, démarrer une nouvelle discussion dans ce projet, joindre les photos et écrire **« Prépare ce produit pour Vinted »**.
-
-Le fichier complet et les instructions restent disponibles aux discussions du projet : leur ajout se fait une fois, puis doit être renouvelé si l’utilisateur souhaite adopter une nouvelle version publiée ici. Les instructions du projet s’appliquent à ce projet et prennent le pas sur les instructions personnalisées générales. Les photos et les précisions restent propres à chaque article ; ne pas présumer les caractéristiques d’un nouvel article à partir d’une autre discussion.
-
-### Variante : instructions personnalisées générales
-
-1. Dans l’app iOS ou Android, ouvrir **Paramètres → Personnaliser ChatGPT** et activer la personnalisation.
-2. Copier le texte des [instructions courtes](docs/chatgpt-custom-instructions.txt) dans **Instructions personnalisées**, en conservant les autres préférences utiles dans la limite du champ.
-3. Joindre les photos d’un article dans une discussion et écrire **« Prépare ce produit pour Vinted »**.
-
-Le texte proposé fait moins de 1 500 caractères pour tenir dans la limite Free et Go ; la limite documentée pour les autres offres est de 5 000 caractères. Les réglages généraux concernent toutes les discussions, mais ce texte déclenche le parcours Vinted quand la demande le concerne. La version courte résume les règles principales ; ajouter le document complet à une discussion ou à un projet pour disposer de toutes les références. Une instruction personnalisée n’ajoute aucun outil de navigation ou de transfert de photos absent du compte.
-
-## Démarrer sur téléphone avec Claude ou ChatGPT
-
-**Le dossier `SKILL.md` installé localement dans Codex ne s’installe pas directement dans ChatGPT mobile depuis un lien GitHub.** Pour un usage réutilisable, configurer le projet Vinted décrit ci-dessus. Pour un essai dans une discussion, utiliser le document complet ci-dessous. Le parcours plugin plus bas concerne la distribution par plugin. [Différence officielle entre skills locaux et plugins](https://learn.chatgpt.com/docs/build-skills).
-
-Pour préparer le texte sans installer de skill :
-
-1. Ouvrir les [instructions complètes](docs/assistant-instructions.md), puis enregistrer ce fichier ou copier son contenu.
-2. Joindre le document et les photos originales d'un seul article dans une conversation Claude ou ChatGPT capable de lire les images.
-3. Écrire : **« Applique les instructions jointes aux photos pour préparer mon annonce Vinted. Je veux le titre, la description et les champs à recopier. »** Ajouter le prix, la taille ou l’état si connus.
-4. Vérifier la fiche obtenue, puis copier ses champs dans Vinted.
-
-Ce document réunit le skill et toutes ses références. Il est généré depuis `skills/` et contrôlé par les tests. La méthode fonctionne comme instructions de conversation ; elle n'installe pas un skill permanent dans le compte. Les fonctions de pièces jointes et d'analyse d'images doivent être disponibles dans l'assistant choisi.
-
-Pour essayer avec un lien public, copier cette demande dans l'assistant :
+### Texte à copier
 
 ```text
-Lis les instructions complètes de ce fichier :
-https://raw.githubusercontent.com/Tereo/VintedFastSelling/main/docs/assistant-instructions.md
-Applique-les aux photos jointes pour préparer mon annonce Vinted.
-Si tu ne peux pas lire le document intégralement, dis-le et demande-moi de le joindre.
+Quand ma demande concerne Vinted, prépare une annonce en français et en EUR depuis mes photos d’un seul vêtement ou jouet.
+Analyse les photos avant les questions. Garde seulement les faits visibles ou déclarés ; marque les inconnues, cite les défauts et regroupe les questions utiles. N’invente ni marque, taille, matière, état, fonctionnement ou accessoires. Conserve la taille exacte de l’étiquette.
+Mon prix explicite prime. Sinon, retiens la borne haute d’une fourchette Vinted pertinente réellement visible ; à défaut, propose un prix à partir de comparables actuels avec liens. Sans source accessible, demande mon prix. N’invente aucune source ni estimation.
+Fournis titre, description à copier, catégorie, marque, taille, état, couleur, prix et origine, ordre des photos et points à préciser.
+« Prépare ce produit pour Vinted » = texte seul. « Vends ça sur Vinted » = préparation puis préremplissage seulement si les outils, la connexion et le transfert réel des photos sont disponibles. Sinon, donne la fiche à recopier. N’annonce aucun remplissage ou brouillon sauvegardé sans vérification. Ne publie jamais ; je publie moi-même. Ne demande aucun mot de passe ou code ; ne contourne aucun blocage.
+Si le document complet des instructions Vinted est joint ou dans les fichiers du projet, consulte-le pour les règles détaillées.
 ```
 
-Un assistant peut échouer à lire une URL. Le document joint reste alors le parcours à utiliser. **Le lien du dépôt seul ne déclenche pas une installation.**
+Ce texte est autonome pour préparer une fiche ; le document complet mentionné à la dernière ligne est facultatif. Il fait moins de 1 500 caractères. Les instructions personnalisées sont disponibles sur iOS et Android avec toutes les offres ; leur limite documentée est de 1 500 caractères pour Free et Go, et de 5 000 pour les autres offres. [Guide officiel OpenAI](https://help.openai.com/fr-fr/articles/8096356-chatgpt-custom-instructions).
 
-Si ChatGPT répond « ce skill Codex ne peut pas être installé ici », enregistrer les [instructions complètes](docs/assistant-instructions.md), les joindre avec les photos et utiliser la demande de l’étape 3. L’essai porte sur la préparation de l’annonce dans cette conversation. Le préremplissage de Vinted dépend séparément des outils réellement disponibles dans l’assistant.
+Le préremplissage de Vinted dépend des outils disponibles dans votre ChatGPT. Ces instructions permettent de préparer la fiche à recopier ; elles n’ajoutent pas de pilotage de l’app Vinted.
+
+### Garder un espace dédié à Vinted
+
+Vous pouvez aussi créer un **projet ChatGPT « Vinted »** et coller le même bloc dans **••• → Paramètres du projet**. Les instructions s’appliqueront aux discussions de ce projet. Pour disposer de toutes les règles détaillées, y ajouter le document complet proposé ci-dessous. [Guide officiel des projets](https://help.openai.com/en/articles/10169521-projects-in-chatgpt).
+
+## Télécharger les documents
+
+Les fichiers ci-dessous sont publiés dans les **Releases** de ce dépôt GitHub. Les ouvrir depuis le navigateur du téléphone, puis les enregistrer dans les fichiers de l’appareil.
+
+| Fichier | Utilisation |
+| --- | --- |
+| [Instructions courtes à copier](https://github.com/Tereo/VintedFastSelling/releases/latest/download/chatgpt-custom-instructions.txt) | Le même texte que le bloc affiché ci-dessus. |
+| [Document complet à joindre](https://github.com/Tereo/VintedFastSelling/releases/latest/download/vinted-prepare-listing-instructions.md) | Toutes les instructions et références dans un seul fichier, pour ChatGPT ou Claude. |
+| [Tous les téléchargements](https://github.com/Tereo/VintedFastSelling/releases/latest) | Les documents et les archives pour les assistants compatibles. |
+
+Pour utiliser le document complet dans ChatGPT ou Claude, le joindre avec les photos originales d’un article, puis écrire **« Applique les instructions jointes aux photos pour préparer mon annonce Vinted : titre, description et champs à recopier. »** Dans un projet ChatGPT, le document peut être ajouté une fois aux fichiers du projet ; le remplacer si vous souhaitez adopter une nouvelle version.
+
+Le parcours principal consiste à copier le bloc de cette page ou à joindre le document téléchargé. Donner un lien à l’assistant ne garantit pas qu’il pourra en lire le contenu. Une URL GitHub ne modifie pas les réglages de votre compte ChatGPT : le collage de l’étape 2 reste nécessaire.
+
+Les sources lisibles sur GitHub restent dans [docs/assistant-instructions.md](docs/assistant-instructions.md) et [docs/chatgpt-custom-instructions.txt](docs/chatgpt-custom-instructions.txt). La version courte résume les règles ; le document complet réunit le skill et toutes ses références et est généré depuis `skills/`. Le dépôt fournit aussi les formats de skill et plugin décrits ci-dessous.
 
 ## Installer le skill dans Claude
 
@@ -83,9 +79,11 @@ Le fichier **`vinted-prepare-listing-plugin.zip`** contient le manifeste Agent P
 
 Après installation d'un plugin disponible dans le compte, démarrer une nouvelle conversation et sélectionner le plugin avec `@`, ou décrire la tâche. Les skills distribués par plugin peuvent être utilisés sur mobile ; une installation locale dans Codex reste sur la machine concernée. Voir [les surfaces prises en charge par OpenAI](https://learn.chatgpt.com/docs/build-skills).
 
-## Générer ou télécharger les paquets
+## Télécharger ou générer les paquets
 
-Sur GitHub, ouvrir **Actions → Tests → une exécution réussie → Artifacts → vinted-claude-chatgpt**. Décompresser ce téléchargement pour récupérer les ZIP d'importation et le document unique. Les artefacts sont produits après les tests et conservés 30 jours.
+Pour télécharger les fichiers prêts à utiliser, ouvrir la [dernière version publiée](https://github.com/Tereo/VintedFastSelling/releases/latest), puis les fichiers de sa section **Assets**. Les documents et les ZIP y sont disponibles publiquement. Les ZIP d’importation pour Claude et les plugins concernent les assistants qui proposent ces fonctions ; le parcours ChatGPT mobile reste celui du début de cette page.
+
+Les contributeurs peuvent aussi récupérer les fichiers d’une exécution CI : **Actions → Tests → une exécution réussie → Artifacts → vinted-claude-chatgpt**. Ces artefacts sont conservés 30 jours et leur téléchargement peut demander une connexion GitHub.
 
 Pour les générer localement, Python **3.10 ou supérieur** et sa bibliothèque standard suffisent :
 
